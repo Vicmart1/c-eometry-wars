@@ -1,0 +1,19 @@
+CXX = gcc
+CXXFLAGS = -std=c99 -pedantic -Wall -Wextra -O -g
+game: main.o Input.o Player.o Vector3.o Vector2.o
+	$(CXX) $(CXXFLAGS) -o game main.o Input.o Player.o Vector3.o Vector2.o
+
+main.o: main.c Input.h Vector2.h Vector3.h Player.h 
+	$(CXX) $(CXXFLAGS) -c main.c
+
+Input.o: Input.c Input.h Player.h
+	$(CXX) $(CXXFLAGS) -c Input.c
+
+Player.o: Player.c Player.h
+	$(CXX) $(CXXFLAGS) -c Player.c
+
+Vector3.o: Vector3.c Vector3.h
+	$(CXX) $(CXXFLAGS) -c Vector3.c
+
+Vector2.o: Vector2.c Vector2.h
+	$(CXX) $(CXXFLAGS) -c Vector2.c
